@@ -29,14 +29,3 @@ Municipal planners, conservation commissions, coastal landowners, and anyone cur
 ## Accessibility
 
 The page is designed to work with screen readers, keyboard navigation, and phone-sized screens. If something doesn't work for you, please [open an issue](https://github.com/GreaterPortlandCOG/Maine-Coastal-Bluff/issues).
-
-## Running it locally
-
-This is a static website (HTML, CSS, and JavaScript) with no build step. To preview it:
-
-```bash
-python -m http.server 8000
-# then open http://localhost:8000
-```
-
-Map and color settings are in [`js/config.js`](js/config.js).
