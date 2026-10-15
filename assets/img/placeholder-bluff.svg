@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#cfdde3"/>
+  <path d="M0 210 C160 190 260 230 360 205 L420 520 L0 520 Z" fill="#6f8f5e"/>
+  <path d="M360 205 C420 260 440 360 470 420 C500 470 520 500 560 520 L420 520 Z" fill="#b59a72"/>
+  <rect y="500" width="800" height="100" fill="#d9c9a6"/>
+  <path d="M520 560 C620 540 700 560 800 545 L800 600 L480 600 Z" fill="#7fa3b3"/>
+  <text x="400" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#4b5d66">PHOTO PLACEHOLDER</text>
+  <text x="400" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#4b5d66">Replace with PNG/JPG in assets/img/</text>
+</svg>

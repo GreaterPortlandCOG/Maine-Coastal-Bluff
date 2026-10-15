@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb8c4"/><stop offset="1" stop-color="#dfe8ec"/></linearGradient></defs>
+  <rect width="1600" height="700" fill="url(#sky)"/>
+  <path d="M0 260 C300 230 500 270 760 240 L900 560 L0 560 Z" fill="#5d7a4f"/>
+  <path d="M760 240 C840 300 860 420 900 480 C930 520 970 545 1020 560 L860 560 Z" fill="#a88b62"/>
+  <path d="M0 540 L1600 540 L1600 700 L0 700 Z" fill="#cdbb95"/>
+  <path d="M960 600 C1150 575 1350 600 1600 580 L1600 700 L900 700 Z" fill="#6c93a6"/>
+  <text x="800" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#3f525b">HERO PHOTO PLACEHOLDER</text>
+</svg>

@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maine's Coastal Bluffs</title>
+    <meta
+      name="description"
+      content="Maine Geological Survey's 2026 coastal bluff data update: how bluffs are rated, where they're giving way, and what to do about it."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#story">Skip to story</a>
+    <div class="progress" aria-hidden="true">
+      <div class="progress__bar"></div>
+    </div>
+
+    <!-- Mobile top bar -->
+    <div class="topbar">
+      <span class="topbar__title">Coastal Bluffs</span>
+      <button
+        class="topbar__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="section-nav"
+      >
+        <span class="topbar__icon" aria-hidden="true"></span> Sections
+      </button>
+    </div>
+
+    <!-- Left section nav -->
+    <nav id="section-nav" class="sidenav" aria-label="Story sections">
+      <a class="sidenav__home" href="#top">Coastal<br />Bluffs</a>
+      <ol class="sidenav__list">
+        <li><a href="#introduction">By the numbers</a></li>
+        <li><a href="#bluffs-101">Bluffs 101</a></li>
+        <li><a href="#rating">How bluffs are rated</a></li>
+        <li><a href="#updates-2026">The 2026 map</a></li>
+        <li><a href="#high-risk">High risk</a></li>
+        <li><a href="#land-use">Land use</a></li>
+        <li><a href="#case-studies">Case studies</a></li>
+        <li><a href="#highlights">Learn more</a></li>
+      </ol>
+    </nav>
+
+    <main id="story" tabindex="-1">
+      <!-- ===== Hero ===== -->
+      <header id="top" class="hero">
+        <div id="map-hero" class="hero__map" aria-hidden="true"></div>
+        <div class="hero__shade" aria-hidden="true"></div>
+        <div class="hero__text">
+          <p class="kicker">Maine Geological Survey · 2026 data update</p>
+          <h1>Coastal Bluff <span class="hl"> layer update</span></h1>
+          <p class="dek">
+            New maps rate every coastal bluff in Maine. Here's what they show,
+            and how to read them.
+          </p>
+        </div>
+        <p class="hero__cue" aria-hidden="true">Scroll <span>↓</span></p>
+      </header>
+
+      <!-- ===== 1. By the numbers ===== -->
+      <section
+        id="introduction"
+        class="chapter"
+        aria-labelledby="h-introduction"
+      >
+        <div class="wrap">
+          <h2 id="h-introduction" class="eyebrow" tabindex="-1">
+            <span>01</span> By the numbers
+          </h2>
+          <p class="big">
+            A <em>bluff</em> is a steep shoreline slope of loose sediment, at
+            least 3 feet high, just above high tide.
+          </p>
+
+          <div class="stats">
+            <p class="stat stat--S">
+              <span class="stat__num" data-count data-stat="bluffMiles"
+                >1,689</span
+              ><span class="stat__label">miles of coastal bluff mapped</span>
+            </p>
+            <p class="stat stat--U">
+              <span class="stat__num" data-count data-stat="movingMiles"
+                >579</span
+              ><span class="stat__label"
+                >miles unstable or highly unstable</span
+              >
+            </p>
+            <p class="stat stat--H">
+              <span class="stat__num" data-count data-stat="highMiles">77</span
+              ><span class="stat__label">miles highly unstable</span>
+            </p>
+          </div>
+
+          <figure class="waffle-fig">
+            <div
+              class="waffle"
+              role="img"
+              data-waffle
+              aria-label="Share of Maine's bluff miles by stability: about 66% stable, 30% unstable, 4% highly unstable."
+            ></div>
+            <figcaption class="waffle-key">
+              <span
+                ><i class="sw sw--S"></i>Stable
+                <b data-stat="pctS">66%</b></span
+              >
+              <span
+                ><i class="sw sw--U"></i>Unstable
+                <b data-stat="pctU">30%</b></span
+              >
+              <span
+                ><i class="sw sw--H"></i>Highly unstable
+                <b data-stat="pctH">4%</b></span
+              >
+              <span class="waffle-key__note">1 square ≈ 1% of bluff miles</span>
+            </figcaption>
+          </figure>
+
+          <div class="uses">
+            <p class="uses__title">Use this data to</p>
+            <ul class="chips">
+              <li>See where bluffs are</li>
+              <li>Guide local planning</li>
+              <li>Flag sites for a closer look</li>
+              <li>Build coastal resilience</li>
+            </ul>
+            <p class="note">
+              <span aria-hidden="true">!</span> A planning tool for broad areas.
+              <strong>Not</strong> a site-specific assessment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 2. Bluffs 101 ===== -->
+      <section
+        id="bluffs-101"
+        class="chapter chapter--tint"
+        aria-labelledby="h-101"
+      >
+        <div class="wrap">
+          <h2 id="h-101" class="eyebrow" tabindex="-1">
+            <span>02</span> Bluffs 101
+          </h2>
+          <p class="big">
+            Erosion is natural. It becomes a <em>hazard</em> when something we
+            value sits at the edge.
+          </p>
+        </div>
+
+        <div class="scrolly scrolly--diagram">
+          <div class="scrolly__sticky">
+            <figure class="diagram" data-diagram>
+              <svg
+                viewBox="0 0 800 480"
+                role="img"
+                aria-labelledby="diagram-title"
+              >
+                <title id="diagram-title">
+                  Cross-section of a coastal bluff showing slope, shape,
+                  vegetation, shoreline, groundwater and runoff, and sea level.
+                  Each part is highlighted as you scroll.
+                </title>
+                <g data-part="base">
+                  <path
+                    d="M0 150 H350 C390 150 410 175 430 215 L500 360 C515 390 535 400 560 402 L0 402 Z"
+                    fill="#d9bf8f"
+                  />
+                  <path
+                    d="M0 150 H350 C390 150 410 175 430 215 L500 360 C515 390 535 400 560 402"
+                    fill="none"
+                    stroke="#a5824a"
+                    stroke-width="3"
+                  />
+                  <g transform="translate(150 98)">
+                    <rect width="70" height="52" fill="#003f67" />
+                    <path d="M-8 2 L35 -30 L78 2 Z" fill="#002a45" />
+                    <rect x="28" y="24" width="16" height="28" fill="#d9bf8f" />
+                  </g>
+                </g>
+                <g data-part="veg">
+                  <circle cx="40" cy="132" r="22" fill="#4f9a63" />
+                  <circle cx="80" cy="128" r="26" fill="#3d8452" />
+                  <circle cx="270" cy="134" r="18" fill="#4f9a63" />
+                  <circle cx="310" cy="130" r="22" fill="#3d8452" />
+                  <circle cx="398" cy="178" r="12" fill="#62ab72" />
+                  <circle cx="430" cy="232" r="10" fill="#62ab72" />
+                  <circle cx="455" cy="282" r="9" fill="#62ab72" />
+                </g>
+                <g data-part="slope">
+                  <path
+                    d="M430 215 L520 395"
+                    stroke="#f07c1e"
+                    stroke-width="4"
+                    stroke-dasharray="8 6"
+                  />
+                  <path
+                    d="M480 395 A40 40 0 0 0 500 360"
+                    fill="none"
+                    stroke="#f07c1e"
+                    stroke-width="4"
+                  />
+                  <text x="400" y="392" class="dg-label">steep?</text>
+                </g>
+                <g data-part="shape">
+                  <path
+                    d="M350 150 C390 150 410 175 430 215 L500 360 C515 390 535 400 560 402"
+                    fill="none"
+                    stroke="#f07c1e"
+                    stroke-width="7"
+                    stroke-linecap="round"
+                  />
+                  <text x="470" y="200" class="dg-label">
+                    profile &amp; height
+                  </text>
+                </g>
+                <g data-part="shore">
+                  <path d="M520 402 H800 V480 H470 Z" fill="#efe3c6" />
+                  <ellipse cx="600" cy="406" rx="22" ry="10" fill="#7d7d7d" />
+                  <ellipse cx="640" cy="410" rx="14" ry="8" fill="#959595" />
+                  <text x="600" y="455" class="dg-label dg-label--shore">
+                    beach, ledge, marsh
+                  </text>
+                </g>
+                <g data-part="sea">
+                  <path
+                    d="M560 412 H800 V480 H540 Z"
+                    fill="#3c7ea6"
+                    opacity=".85"
+                  />
+                </g>
+                <g data-part="slr">
+                  <path
+                    class="slr-water"
+                    d="M505 375 H800 V480 H470 Z"
+                    fill="#3c7ea6"
+                    opacity=".55"
+                  />
+                  <path
+                    class="slr-line"
+                    d="M505 375 H800"
+                    stroke="#003f67"
+                    stroke-width="3"
+                    stroke-dasharray="10 6"
+                  />
+                  <text x="580" y="362" class="dg-label">
+                    higher water hits the toe
+                  </text>
+                </g>
+                <g data-part="water">
+                  <path
+                    class="flow"
+                    d="M180 160 C260 165 320 160 355 152"
+                    stroke="#2b8fd6"
+                    stroke-width="4"
+                    fill="none"
+                    stroke-dasharray="12 10"
+                  />
+                  <path
+                    class="flow"
+                    d="M100 260 C250 270 380 290 470 300"
+                    stroke="#2b8fd6"
+                    stroke-width="4"
+                    fill="none"
+                    stroke-dasharray="12 10"
+                  />
+                  <circle cx="472" cy="300" r="7" fill="#2b8fd6" />
+                  <text x="120" y="250" class="dg-label">groundwater seep</text>
+                  <text x="230" y="190" class="dg-label">runoff</text>
+                </g>
+              </svg>
+            </figure>
+          </div>
+          <ol class="scrolly__steps">
+            <li class="step" data-focus="slope">
+              <b>Slope.</b> Steeper faces fail more easily.
+            </li>
+            <li class="step" data-focus="shape">
+              <b>Shape.</b> Height and profile change how a bluff responds.
+            </li>
+            <li class="step" data-focus="veg">
+              <b>Vegetation.</b> Roots hold sediment. Bare faces erode faster.
+            </li>
+            <li class="step" data-focus="shore">
+              <b>Shoreline.</b> Ledge, marsh or beach at the base absorb waves.
+            </li>
+            <li class="step" data-focus="water">
+              <b>Water.</b> Runoff and groundwater weaken bluffs from above and
+              within.
+            </li>
+            <li class="step" data-focus="slr">
+              <b>Sea-level rise.</b> Higher water undercuts the toe more often.
+            </li>
+            <li class="step" data-focus="all">
+              <b>No single cause.</b> It's how these factors combine. That's
+              what the rating measures.
+            </li>
+          </ol>
+        </div>
+
+        <div class="wrap wrap--wide">
+          <h3 class="sub" id="explore-types">Different Bluff Ratings</h3>
+          <div class="photo-grid">
+            <figure
+              class="photo"
+              data-annotations='[{"type":"ellipse","x":50,"y":38,"rx":30,"ry":14,"n":1},{"type":"circle","x":28,"y":80,"r":9,"n":2}]'
+            >
+              <div class="photo__frame">
+                <img
+                  src="assets/img/stable.jpg"
+                  alt="Placeholder: gently sloping, fully vegetated bluff with a wide beach."
+                  loading="lazy"
+                />
+                <span class="badge badge--S">Stable</span>
+              </div>
+              <figcaption>
+                <span class="callnum">1</span> full plant cover
+                <span class="callnum">2</span> wide base
+              </figcaption>
+            </figure>
+            <figure
+              class="photo"
+              data-annotations='[{"type":"circle","x":40,"y":45,"r":10,"n":1},{"type":"circle","x":70,"y":30,"r":8,"n":2}]'
+            >
+              <div class="photo__frame">
+                <img
+                  src="assets/img/Unstable.jpg"
+                  alt="Placeholder: steep, shrubby bluff with bare patches and tilting trees."
+                  loading="lazy"
+                />
+                <span class="badge badge--U">Unstable</span>
+              </div>
+              <figcaption>
+                <span class="callnum">1</span> bare patches
+                <span class="callnum">2</span> tilting trees
+              </figcaption>
+            </figure>
+            <figure
+              class="photo"
+              data-annotations='[{"type":"ellipse","x":50,"y":45,"rx":22,"ry":28,"n":1},{"type":"circle","x":75,"y":82,"r":9,"n":2}]'
+            >
+              <div class="photo__frame">
+                <img
+                  src="assets/img/HighlyUnstable.jpg"
+                  alt="Placeholder: near-vertical bare bluff with fallen trees and slumped blocks."
+                  loading="lazy"
+                />
+                <span class="badge badge--H">Highly unstable</span>
+              </div>
+              <figcaption>
+                <span class="callnum">1</span> bare, near-vertical
+                <span class="callnum">2</span> fallen trees, slumps
+              </figcaption>
+            </figure>
+          </div>
+          <p class="fine">
+            <a
+              href="https://www.maine.gov/dacf/mgs/pubs/mapuse/series/bluffs/bluff-sidebar.pdf"
+              >More examples (MGS, PDF)</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== 3. How bluffs are rated ===== -->
+      <section id="rating" class="chapter" aria-labelledby="h-rating">
+        <div class="wrap">
+          <h2 id="h-rating" class="eyebrow" tabindex="-1">
+            <span>03</span> How bluffs are rated
+          </h2>
+          <p class="big">
+            Each 2026 segment gets a <em>stability score</em>: points for what
+            geologists see, plus terrain from lidar.
+          </p>
+          <ol class="formula" aria-label="How the stability score is built">
+            <li>
+              <b>Visible signs</b
+              ><span
+                >6 factors from aerial photos &amp; field visits · 0–6 pts
+                each</span
+              >
+            </li>
+            <li class="formula__op" aria-hidden="true">+</li>
+            <li>
+              <b>Terrain</b
+              ><span
+                >aspect, height, slope from NOAA lidar · counted only if signs
+                are visible</span
+              >
+            </li>
+            <li class="formula__op" aria-hidden="true">=</li>
+            <li>
+              <b>Rating</b
+              ><span
+                ><i class="sw sw--S"></i>0–9 Stable ·
+                <i class="sw sw--U"></i>10–29 Unstable ·
+                <i class="sw sw--H"></i>30+ Highly unstable</span
+              >
+            </li>
+          </ol>
+        </div>
+
+        <div class="wrap wrap--wide">
+          <h3 class="sub">Try to score a bluff</h3>
+          <div class="calc" data-calc>
+            <form class="calc__inputs" aria-describedby="calc-help">
+              <p id="calc-help" class="fine calc__help">
+                Pick what you'd see on the bluff. The score updates as you go.
+              </p>
+              <div
+                class="calc__presets"
+                role="group"
+                aria-label="Example bluffs"
+              >
+                <button type="button" data-preset="S">Stable example</button>
+                <button type="button" data-preset="U">Unstable example</button>
+                <button type="button" data-preset="H">
+                  Highly unstable example
+                </button>
+              </div>
+              <p class="calc__group">Visible signs</p>
+              <div data-factors="visible"></div>
+              <p class="calc__group">
+                Terrain <span class="calc__mult" data-mult>×0</span>
+              </p>
+              <div data-factors="terrain"></div>
+            </form>
+            <div class="calc__result">
+              <div class="calc__sticky">
+                <p class="calc__label">Stability score</p>
+                <p class="calc__score"><span data-score>0</span></p>
+                <p class="calc__rating" data-rating>Stable</p>
+                <div class="gauge" aria-hidden="true">
+                  <div class="gauge__band gauge__band--S"></div>
+                  <div class="gauge__band gauge__band--U"></div>
+                  <div class="gauge__band gauge__band--H"></div>
+                  <div class="gauge__marker" data-marker></div>
+                </div>
+                <div class="gauge__ticks" aria-hidden="true">
+                  <span>0</span><span>10</span><span>30</span><span>50+</span>
+                </div>
+                <p class="calc__math" data-math></p>
+                <p class="sr-only" aria-live="polite" data-live></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wrap wrap--wide">
+          <div class="scores">
+            <div class="score-card">
+              <p class="score-card__tag">Also new in 2026</p>
+              <h3>Sediment value</h3>
+              <p>
+                How much a bluff <b>feeds</b> nearby beaches, flats and marshes.
+              </p>
+              <ul class="mini-list">
+                <li><span>Erosion signs</span><b>0–6 each</b></li>
+                <li><span>Sediment moving offshore</span><b>0–12</b></li>
+                <li><span>Beach, flat or marsh below</span><b>+3</b></li>
+                <li>
+                  <span>Dune · fringing marsh · shellfish / worm flats</span
+                  ><b>+6 each</b>
+                </li>
+              </ul>
+              <p class="scale">
+                <span>None</span><span>Low</span><span>Medium</span
+                ><span>High</span>
+              </p>
+            </div>
+            <div class="score-card">
+              <p class="score-card__tag">Also new in 2026</p>
+              <h3>Habitat count</h3>
+              <p>Special habitats within <b>328 ft</b> of the bluff.</p>
+              <ul class="habitats" aria-label="Habitats counted">
+                <li>Sand dunes</li>
+                <li>Seagrass</li>
+                <li>Shellfish beds</li>
+                <li>Marine worm beds</li>
+                <li>Waterfowl &amp; wading birds</li>
+                <li>Shorebird areas</li>
+                <li>Essential habitat</li>
+                <li>Rare species</li>
+                <li>Fringing marsh</li>
+              </ul>
+            </div>
+          </div>
+          <p class="fine">
+            Method:
+            <a href="https://www.maine.gov/dacf/mgs/pubs/digital/bluffs.htm"
+              >MGS Coastal Bluffs digital data</a
+            >. Terrain counts in full when visible signs total more than 8, half
+            for 5–8, and not at all below 5.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== 4. The 2026 map ===== -->
+      <section
+        id="updates-2026"
+        class="chapter chapter--flush"
+        aria-labelledby="h-updates"
+      >
+        <div class="wrap">
+          <h2 id="h-updates" class="eyebrow" tabindex="-1">
+            <span>04</span> The 2026 map
+          </h2>
+          <p class="big">
+            Scroll to tour the map, then <em>click any bluff</em> to see its
+            score.
+          </p>
+        </div>
+
+        <div class="scrolly scrolly--map" data-map="map-stability" data-popups>
+          <div class="scrolly__sticky">
+            <div
+              id="map-stability"
+              class="map"
+              role="region"
+              aria-label="Interactive map of Maine coastal bluff stability"
+              aria-describedby="map-stability-desc"
+            ></div>
+            <p id="map-stability-desc" class="sr-only">
+              Interactive map. Use the plus and minus buttons to zoom, arrow
+              keys to pan. The text steps describe each view.
+            </p>
+            <div class="map-help" role="note">
+              <span><kbd>+</kbd><kbd>−</kbd> top right to zoom</span>
+              <span>Drag to pan</span>
+              <span><b>Click a line</b> for its score</span>
+            </div>
+            <div class="map-key" data-key="stability">
+              <span><i class="sw sw--S"></i>Stable</span
+              ><span><i class="sw sw--U"></i>Unstable</span
+              ><span><i class="sw sw--H"></i>Highly unstable</span>
+            </div>
+            <div class="map-key" data-key="sediment" hidden>
+              <span class="map-key__t">Sediment value</span
+              ><span><i class="sw sw--sed1"></i>Low</span
+              ><span><i class="sw sw--sed2"></i>Medium</span
+              ><span><i class="sw sw--sed3"></i>High</span>
+            </div>
+          </div>
+          <ol class="scrolly__steps">
+            <li
+              class="step"
+              data-center="44.2,-68.9"
+              data-zoom="8"
+              data-view="stability"
+            >
+              Every line is a stretch of bluff.
+              <b data-stat="bluffMiles">1,689</b> miles in all.
+            </li>
+            <li
+              class="step"
+              data-center="44.2,-68.9"
+              data-zoom="8"
+              data-view="highly"
+            >
+              <b class="t-H"><span data-stat="highMiles">77</span> miles</b> are
+              highly unstable.
+            </li>
+            <li
+              class="step"
+              data-center="44.83,-67.15"
+              data-zoom="12"
+              data-view="highly"
+            >
+              <b>Whiting Bay</b> has the most: 9.3 miles.
+            </li>
+
+            <li
+              class="step step--cta"
+              data-center="43.82,-69.95"
+              data-zoom="13"
+              data-view="stability"
+            >
+              <b>How each bluff segment is scored. </b> Click any line to see
+              how it scored.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== 5. High risk ===== -->
+      <section
+        id="high-risk"
+        class="chapter chapter--tint"
+        aria-labelledby="h-risk"
+      >
+        <div class="wrap">
+          <h2 id="h-risk" class="eyebrow" tabindex="-1">
+            <span>05</span> High risk
+          </h2>
+          <p class="big">
+            MGS classifies the shore <em>twice</em>: what's at the water's edge,
+            and how stable the bluff face is above it.
+          </p>
+        </div>
+
+        <div class="wrap wrap--wide">
+          <figure class="matrix-fig">
+            <div class="matrix-scroll">
+              <table class="matrix" data-matrix>
+                <caption class="sr-only">
+                  Miles of Maine shoreline by bluff face stability (rows) and
+                  shoreline type below the bluff (columns).
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="matrix__corner">
+                      <span>Bluff face ↓</span><span>Shoreline →</span>
+                    </th>
+                    <th scope="col" data-col="L">
+                      <b>Ledge</b><small>bedrock outcrop</small>
+                    </th>
+                    <th scope="col" data-col="A">
+                      <b>Armored</b><small>seawall, riprap</small>
+                    </th>
+                    <th scope="col" data-col="V">
+                      <b>Salt marsh</b><small>vegetated marsh</small>
+                    </th>
+                    <th scope="col" data-col="N">
+                      <b>Beach / flat</b><small>sand, mud, cobble</small>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-row="H">
+                    <th scope="row">
+                      <i class="sw sw--H"></i><b>Highly unstable</b
+                      ><small>near-vertical, bare, fallen trees</small>
+                    </th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr data-row="U">
+                    <th scope="row">
+                      <i class="sw sw--U"></i><b>Unstable</b
+                      ><small>shrubby, bare spots, tilting trees</small>
+                    </th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr data-row="S">
+                    <th scope="row">
+                      <i class="sw sw--S"></i><b>Stable</b
+                      ><small>gentle, fully vegetated</small>
+                    </th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr data-row="N">
+                    <th scope="row">
+                      <i class="sw sw--N"></i><b>No bluff</b
+                      ><small>under 3 ft of sediment</small>
+                    </th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption class="matrix-cap">
+              <span>Miles of shoreline. Darker = more miles.</span>
+              <span class="matrix-cap__insight" data-insight
+                >Bluffs above <b>beaches and flats</b> are the most likely to be
+                highly unstable.</span
+              >
+            </figcaption>
+          </figure>
+          <p class="fine">
+            Classification from the
+            <a
+              href="https://www.maine.gov/dacf/mgs/pubs/mapuse/series/bluffs/bluff-exp.pdf"
+              >MGS Coastal Bluffs map explanation (PDF)</a
+            >. Some shores have more than one type.
+          </p>
+        </div>
+
+        <div class="wrap">
+          <h3 class="sub">Face vs. landslide</h3>
+          <div class="versus">
+            <div class="versus__card">
+              <svg viewBox="0 0 120 80" aria-hidden="true">
+                <path d="M0 20 H50 L80 70 H0Z" fill="#d9bf8f" />
+                <path d="M50 20 L80 70" stroke="#e0a800" stroke-width="5" />
+                <circle cx="66" cy="48" r="3" fill="#fff" />
+                <circle cx="72" cy="58" r="3" fill="#fff" />
+              </svg>
+              <h4>Bluff face</h4>
+              <p>Surface erosion. Gradual, episodic.</p>
+              <p class="versus__tag">This map</p>
+            </div>
+            <div class="versus__vs" aria-hidden="true">vs</div>
+            <div class="versus__card versus__card--H">
+              <svg viewBox="0 0 120 80" aria-hidden="true">
+                <path d="M0 20 H40 L80 70 H0Z" fill="#d9bf8f" />
+                <path
+                  d="M40 20 C30 45 45 60 80 70"
+                  fill="none"
+                  stroke="#d62839"
+                  stroke-width="5"
+                  stroke-dasharray="6 5"
+                />
+              </svg>
+              <h4>Landslide</h4>
+              <p>
+                Deep failure. Sudden, large. Likely with high steep faces, clay,
+                toe erosion and high groundwater.
+              </p>
+              <p class="versus__tag">Separate MGS map</p>
+            </div>
+          </div>
+          <ul class="facts">
+            <li><b>150 ft</b> segments, averaged</li>
+            <li><b>Boat &amp; air</b> surveys + lidar</li>
+            <li>
+              <b>1996</b> Rockland Harbor slide, on a bluff rated only
+              "unstable"
+            </li>
+          </ul>
+          <p class="note">
+            <span aria-hidden="true">!</span> For a specific site, consult a
+            licensed geologist or geotechnical engineer.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== 6. Land use ===== -->
+      <section
+        id="land-use"
+        class="chapter chapter--flush"
+        aria-labelledby="h-land"
+      >
+        <div class="wrap">
+          <h2 id="h-land" class="eyebrow" tabindex="-1">
+            <span>06</span> Land use
+          </h2>
+          <p class="big">
+            What happens at the top matters as much as the waves at the bottom.
+          </p>
+        </div>
+
+        <div class="scrolly scrolly--map" data-map="map-runoff" data-popups>
+          <div class="scrolly__sticky">
+            <div
+              id="map-runoff"
+              class="map"
+              role="region"
+              aria-label="Interactive map of groundwater and runoff on Maine coastal bluffs"
+              aria-describedby="map-runoff-desc"
+            ></div>
+            <p id="map-runoff-desc" class="sr-only">
+              Interactive map. The text steps describe each view.
+            </p>
+            <div class="map-key">
+              <span class="map-key__t">Groundwater / runoff</span
+              ><span><i class="sw sw--w1"></i>Minimal</span
+              ><span><i class="sw sw--w2"></i>Moderate</span
+              ><span><i class="sw sw--w3"></i>Extensive</span>
+            </div>
+          </div>
+          <ol class="scrolly__steps">
+            <li
+              class="step"
+              data-center="43.85,-69.95"
+              data-zoom="10"
+              data-view="runoff"
+            >
+              Blue marks bluffs where
+              <b>water is seeping out or running over</b> the face.
+            </li>
+            <li
+              class="step"
+              data-center="43.816,-69.937"
+              data-zoom="13"
+              data-view="runoff"
+            >
+              <b>Orrs Island</b> has the most: 16 miles.
+            </li>
+          </ol>
+        </div>
+
+        <div class="wrap">
+          <ul class="dos">
+            <li>
+              <span aria-hidden="true">↪</span><b>Redirect</b> roof &amp;
+              driveway runoff away from the edge
+            </li>
+            <li>
+              <span aria-hidden="true">✿</span><b>Plant</b> native, deep-rooted
+              cover
+            </li>
+            <li>
+              <span aria-hidden="true">⇤</span><b>Set back</b> structures and
+              clearing
+            </li>
+          </ul>
+          <p class="fine">
+            <a
+              href="https://www.maine.gov/dep/land/ourshore/docs/2026OURSHOREReferencesforPlantSelectionandSourcing.pdf"
+              >OUR SHORE plant guide (PDF)</a
+            >
+            · <span class="draft-inline">Cumberland County guide (coming)</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== 7. Case studies ===== -->
+      <section
+        id="case-studies"
+        class="chapter chapter--tint"
+        aria-labelledby="h-cases"
+      >
+        <div class="wrap">
+          <h2 id="h-cases" class="eyebrow" tabindex="-1">
+            <span>07</span> Case studies
+          </h2>
+        </div>
+        <ul class="cases" aria-label="Case studies">
+          <li class="case">
+            <img
+              src="assets/img/placeholder-bluff.svg"
+              alt="Placeholder photo for case study one."
+              loading="lazy"
+            />
+            <div class="case__body">
+              <p class="case__place">[Town]</p>
+              <h3>[Case one]</h3>
+              <p class="draft-inline">[One-line outcome]</p>
+            </div>
+          </li>
+          <li class="case">
+            <img
+              src="assets/img/placeholder-bluff.svg"
+              alt="Placeholder photo for case study two."
+              loading="lazy"
+            />
+            <div class="case__body">
+              <p class="case__place">[Town]</p>
+              <h3>[Case two]</h3>
+              <p class="draft-inline">[One-line outcome]</p>
+            </div>
+          </li>
+          <li class="case">
+            <img
+              src="assets/img/placeholder-bluff.svg"
+              alt="Placeholder photo for case study three."
+              loading="lazy"
+            />
+            <div class="case__body">
+              <p class="case__place">[Town]</p>
+              <h3>[Case three]</h3>
+              <p class="draft-inline">[One-line outcome]</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ===== 8. Learn more ===== -->
+      <section id="highlights" class="chapter" aria-labelledby="h-highlights">
+        <div class="wrap">
+          <h2 id="h-highlights" class="eyebrow" tabindex="-1">
+            <span>08</span> Learn more
+          </h2>
+          <p class="draft-note">Draft: project components.</p>
+          <ul class="links">
+            <li>
+              <a href="https://www.maine.gov/dacf/mgs/pubs/digital/bluffs.htm"
+                >Coastal bluff maps &amp; data
+                <span aria-hidden="true">→</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://experience.arcgis.com/experience/611bd1ca7147412a8d934770a3e2bcf8"
+                >Full-screen MGS bluff viewer
+                <span aria-hidden="true">→</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://mgs-maine.opendata.arcgis.com/datasets/4bfd3ddb425c4bb6801affb51b6afe9a_0"
+                >Download the data <span aria-hidden="true">→</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.maine.gov/dacf/mgs/pubs/mapuse/series/bluffs/bluff-exp.pdf"
+                >How bluffs are classified (PDF)
+                <span aria-hidden="true">→</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.maine.gov/dep/land/ourshore/docs/2026OURSHOREReferencesforPlantSelectionandSourcing.pdf"
+                >OUR SHORE plant guide (PDF)
+                <span aria-hidden="true">→</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <p>
+          Data: Maine Geological Survey, Maine Coastal Bluffs (live service).
+          Basemap: Esri, HERE, Garmin, © OpenStreetMap contributors.
+        </p>
+        <p>
+          General information only. Not the sole basis for land-use decisions.
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
